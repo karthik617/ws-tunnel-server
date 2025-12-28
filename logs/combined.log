@@ -1,9 +1,0 @@
-{"level":"info","message":"Redis connected","timestamp":"2025-12-28T09:43:57.586Z"}
-{"level":"info","message":"Redis initialized successfully","timestamp":"2025-12-28T09:43:57.593Z"}
-{"level":"info","message":"Tunnel server started","port":8080,"timestamp":"2025-12-28T09:43:57.595Z"}
-{"level":"info","message":"WebSocket upgrade - Control","timestamp":"2025-12-28T09:44:49.618Z","url":"/"}
-{"clientIp":"::1","level":"info","message":"Control WebSocket connected","timestamp":"2025-12-28T09:44:49.620Z"}
-{"level":"info","localPort":3000,"message":"Tunnel created","timestamp":"2025-12-28T09:44:49.625Z","tunnelId":"d88c66"}
-{"clientIp":"::1","level":"info","localPort":3000,"message":"Tunnel registered","timestamp":"2025-12-28T09:44:49.626Z","tunnelId":"d88c66"}
-{"clientIp":"::1","level":"info","message":"Control WebSocket closed","timestamp":"2025-12-28T09:45:26.594Z","tunnelId":"d88c66"}
-{"level":"info","message":"Tunnel removed","timestamp":"2025-12-28T09:45:26.596Z","tunnelId":"d88c66"}

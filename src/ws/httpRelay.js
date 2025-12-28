@@ -40,8 +40,8 @@ export function setupHttpRelay(app, server, wss) {
       logger.warn('Tunnel not found', { tunnelId });
       return res.status(404).send("Tunnel not found");
     }
-
-    const forwardPath = "/" + parts.slice(2).join("/") + (req._parsedUrl?.search || "");
+    // const forwardPath = "/" + parts.slice(2).join("/") + (req._parsedUrl?.search || "");
+    const forwardPath = "/" + parts.slice(2).join("/");
     const requestId = randomUUID();
 
     logger.debug('Forwarding HTTP request', { 
