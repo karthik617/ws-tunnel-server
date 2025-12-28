@@ -5,13 +5,14 @@ const tunnels = new Map();
   id => {
     ws,
     localPort,
-    type
+    type,
+    pending: new Map()
   }
 */
 
 export function createTunnel(ws, localPort) {
   const id = uuid().slice(0, 6);
-  tunnels.set(id, { ws, localPort, type: "http" });
+  tunnels.set(id, { ws, localPort, type: "http" , pending: new Map()});
   return id;
 }
 
@@ -21,6 +22,9 @@ export function getTunnel(id) {
 
 export function removeTunnel(ws) {
   for (const [id, tunnel] of tunnels.entries()) {
-    if (tunnel.ws === ws) tunnels.delete(id);
+    if (tunnel.ws === ws)  {
+      tunnels.delete(id) 
+      break
+    }
   }
 }

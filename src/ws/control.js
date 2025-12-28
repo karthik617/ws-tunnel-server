@@ -1,6 +1,7 @@
-import { createTunnel, removeTunnel } from "../tunnelManager.js";
+import { createTunnel, removeTunnel, getTunnel } from "../tunnelManager.js";
 
 export function setupControlWS(wss) {
+  let tunnelId = null;
   wss.on("connection", (ws) => {
     ws.on("message", (msg) => {
       let data;
@@ -11,18 +12,26 @@ export function setupControlWS(wss) {
       }
 
       if (data.type === "register") {
-        const id = createTunnel(ws, data.localPort);
+        tunnelId = createTunnel(ws, data.localPort);
         ws.send(JSON.stringify({
           type: "registered",
-          id
+          id: tunnelId
         }));
       }
 
       if (data.type === "http_response") {
-        ws.emit(`response:${data.requestId}`, data);
+        if (!tunnelId) return;
+        const tunnel = getTunnel(tunnelId);
+        if (!tunnel) return;
+        const res = tunnel.pending.get(data.requestId);
+        if (!res) return;
+        res.writeHead(data.status || 200, data.headers || {});
+        res.end(data.body || "");
+
+        tunnel.pending.delete(data.requestId);
       }
     });
-
     ws.on("close", () => removeTunnel(ws));
+    ws.on("error", () => removeTunnel(ws));
   });
 }
