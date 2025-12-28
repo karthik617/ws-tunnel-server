@@ -1,0 +1,21 @@
+{
+  "name": "ws-tunnel-server",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git@github-personal:karthik617/ws-tunnel-server.git"
+  },
+  "license": "ISC",
+  "author": "karthik617",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "uuid": "^9.0.1",
+    "ws": "^8.16.0"
+  }
+}
