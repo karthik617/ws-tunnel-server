@@ -6,7 +6,7 @@ const tunnels = new Map();
     ws,
     localPort,
     type,
-    pending: new Map()
+    pending: MAP<requestId, res>
   }
 */
 
