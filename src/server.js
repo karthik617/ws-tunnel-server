@@ -11,7 +11,7 @@ export function createServer(port) {
   const wss = new WebSocketServer({ server });
 
   setupControlWS(wss);
-  setupHttpRelay(app);
+  setupHttpRelay(app, server);
 
   app.get("/", (_, res) => {
     res.send("🚇 Tunnel server running");
