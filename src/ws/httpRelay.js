@@ -4,7 +4,8 @@ import { randomUUID } from "crypto";
 function getTunnelId(req) {
     // Production (Render)
     if (process.env.NODE_ENV === "production") {
-      return req.headers.host.split(".")[0];
+    //   return req.headers.host.split(".")[0];
+        return req.url.split("/")[2]
     }
   
     // Local dev → /tunnel/:id
