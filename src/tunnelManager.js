@@ -28,3 +28,12 @@ export function removeTunnel(ws) {
     }
   }
 }
+
+export function getAnyHttpTunnel() {
+  for (const [id, tunnel] of tunnels.entries()) {
+    if (tunnel.type === "http") {
+      return { id, ...tunnel };
+    }
+  }
+  return null;
+}

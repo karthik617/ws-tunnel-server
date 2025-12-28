@@ -1,3 +1,4 @@
+// server.js
 import express from "express";
 import http from "http";
 import { WebSocketServer } from "ws";
@@ -8,10 +9,11 @@ export function createServer(port) {
   const app = express();
   const server = http.createServer(app);
 
-  const wss = new WebSocketServer({ server });
+  // Use noServer: true so we can manually route upgrades
+  const wss = new WebSocketServer({ noServer: true });
 
   setupControlWS(wss);
-  setupHttpRelay(app, server);
+  setupHttpRelay(app, server, wss); // Pass wss so httpRelay knows about it
 
   app.get("/", (_, res) => {
     res.send("🚇 Tunnel server running");
