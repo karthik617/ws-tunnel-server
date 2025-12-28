@@ -13,6 +13,7 @@ export function setupControlWS(wss) {
 
       if (data.type === "register") {
         tunnelId = createTunnel(ws, data.localPort);
+        console.log(`🚇 Tunnel ${tunnelId} registered on port ${data.localPort}`);
         ws.send(JSON.stringify({
           type: "registered",
           id: tunnelId
