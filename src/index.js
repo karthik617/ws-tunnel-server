@@ -1,6 +1,6 @@
 // index.js
-import dotenv from "dotenv";
-dotenv.config();
+// import dotenv from "dotenv";
+// dotenv.config();
 import { createServer } from "./server.js";
 import logger from "../utils/logger.js";
 
